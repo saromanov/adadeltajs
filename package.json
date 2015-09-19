@@ -27,7 +27,8 @@
   "homepage": "https://github.com/saromanov/adadeltajs#readme",
   "dependencies": {
     "mathjs": "^1.7.0",
-    "core-js": "^0.6.0"
+    "core-js": "^0.6.0",
+    "random-array": "0.0.2"
   },
   "devDependencies": {
     "babel": "^4.6.0",
