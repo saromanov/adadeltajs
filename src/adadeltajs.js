@@ -1,4 +1,4 @@
-import mathjs, {multiply, add, divide, subtract, dot, sum} from 'mathjs';
+import mathjs, {multiply, add, divide, subtract, dot, sum, sqrt} from 'mathjs';
 import random from 'random-array';
 
 
@@ -17,7 +17,8 @@ export class Adadeltajs {
             let J = sum(multiply(loss, loss));
             let grad = divide(multiply(this.X, loss), m);
             let accgrad = add(multiply(grad, rho), multiply(multiply(grad, grad), (1 - rho)));
-            theta0 = theta0 + deltax;
+            let step = multiply(div(sqrt(accvalue + offset), sqrt(accgrad + offset)), grad);
+            theta0 = add(theta0, deltax);
             
         }
 
