@@ -6,6 +6,10 @@ export class Adadeltajs {
     constructor(X, y) {
         this.X = X;
         this.y = y;
+        let isvalid = validateData(X, y);
+        if(!isvalid) {
+            throw "Input data is invalid";
+        }
     }
 
     //iters provides number of iterations.Or run until converge
@@ -26,4 +30,13 @@ export class Adadeltajs {
 
         return theta0;
     }
+}
+
+
+let validateData = function(X, y) {
+    if(X.length == 0 || y.length == 0) {
+        return false;
+    }
+
+    return true;
 }
