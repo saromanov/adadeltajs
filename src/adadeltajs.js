@@ -8,6 +8,8 @@ export class Adadeltajs {
         this.y = y;
     }
 
+    //iters provides number of iterations.Or run until converge
+    //rho, epsilon - params for model
     fit(iters=100, rho=0.001, eps=0.001) {
         let converge = false;
         let theta0 = random(-0.001, 0.001).oned(this.X.length);
