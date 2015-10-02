@@ -24,6 +24,7 @@ export class Adadeltajs {
             let grad = divide(multiply(this.X, loss), m);
             let accgrad = add(multiply(grad, rho), multiply(multiply(grad, grad), (1 - rho)));
             let step = multiply(-1, multiply(div(sqrt(accvalue + offset), sqrt(accgrad + offset)), grad));
+            accupdates = add(multiply(accupdates, rho), multiply((1 + rho), multiply(step, step)))
             theta0 = add(theta0, step);
             
         }
