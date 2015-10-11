@@ -17,13 +17,16 @@ export class Adadeltajs {
     fit(iters=100, rho=0.001, eps=0.001) {
         let converge = false;
         let theta0 = random(-0.001, 0.001).oned(this.X.length);
+        let m = this.X.length;
+        let accupdates = 0;
+        let offset = 0.0001;
         while(!converge) {
             let value = multiply(this.X, theta0);
             let loss = subtract(value, this.y);
             let J = sum(multiply(loss, loss));
             let grad = divide(multiply(this.X, loss), m);
             let accgrad = add(multiply(grad, rho), multiply(multiply(grad, grad), (1 - rho)));
-            let step = multiply(-1, multiply(div(sqrt(accvalue + offset), sqrt(accgrad + offset)), grad));
+            let step = multiply(-1, multiply(divide(sqrt(accupdates + offset), sqrt(accgrad + offset)), grad));
             accupdates = add(multiply(accupdates, rho), multiply((1 + rho), multiply(step, step)))
             theta0 = add(theta0, step);
             
